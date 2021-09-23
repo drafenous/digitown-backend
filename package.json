@@ -1,10 +1,10 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "app/build/server.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server/server.ts",
+    "start": "node app/build/app/server/server.js",
     "dev": "nodemon server/server.ts",
     "build": "tsc --project ./"
   },
