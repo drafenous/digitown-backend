@@ -12,25 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const bcrypt_1 = __importDefault(require("bcrypt"));
 const database_1 = __importDefault(require("../infra/database"));
-class UserData {
-    getUser(email, password) {
+class ScheduleData {
+    getSchedules(userId) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = `select * from public.users where email = '${email}'`;
-            return yield database_1.default.query(query).then((users) => users.find((user) => __awaiter(this, void 0, void 0, function* () {
-                return yield bcrypt_1.default.compare(password, user.passwordHash);
-            })));
-        });
-    }
-    createUser({ fullName, email, passwordHash: password }) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const hash = bcrypt_1.default.hash(password, 10);
-            const query = `INSERT INTO public.users(
-      "fullName", email, "passwordHash")
-      VALUES ('${fullName}', '${email}', '${hash}');`;
+            const query = `select * from public.schedule where "userId" = '${userId}'`;
             return yield database_1.default.query(query);
         });
     }
+    createSchedule({ companyName, datetime, userId }) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const query = `INSERT INTO public.schedule(
+      "companyName", datetime, "userId")
+      VALUES ('${companyName}', '${datetime}', '${userId}');`;
+            yield database_1.default.query(query);
+            const responseQuery = `select * from public.schedule where "companyName" = '${companyName}' AND datetime = '${datetime}' and "userId" = ${userId}`;
+            return database_1.default.query(responseQuery);
+        });
+    }
 }
-exports.default = UserData;
+exports.default = ScheduleData;
