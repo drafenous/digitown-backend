@@ -14,10 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const body_parser_1 = __importDefault(require("body-parser"));
 const express_1 = __importDefault(require("express"));
-const userService_1 = __importDefault(require("../service/userService"));
+const scheduleService_1 = __importDefault(require("../service/scheduleService"));
 const router = express_1.default.Router();
-const service = new userService_1.default();
+const service = new scheduleService_1.default();
 const jsonParser = body_parser_1.default.json();
-router.get("/login", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return service.login(req, res); }));
+router.get("/list", (req, res) => __awaiter(void 0, void 0, void 0, function* () { return service.list(req, res); }));
 router.post("/create", jsonParser, (req, res) => __awaiter(void 0, void 0, void 0, function* () { return service.create(req, res); }));
 exports.default = router;
