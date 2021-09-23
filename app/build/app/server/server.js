@@ -11,4 +11,4 @@ const app = (0, express_1.default)();
 app.use(body_parser_1.default.json({ type: 'application/*+json' }));
 app.use('/user', userRoute_1.default);
 app.use('/schedule', scheduleRoute_1.default);
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
