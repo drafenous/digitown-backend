@@ -1,0 +1,41 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add express body-parser pg-primise axios --save
+
+PATH: 
+  C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\rodri\AppData\Local\Microsoft\WindowsApps;D:\Program Files\Git\cmd;%NVM_HOME%;%NVM_SYMLINK%;C:\Users\rodri\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rodri\AppData\Roaming\nvm;C:\Program Files\nodejs
+
+Yarn version: 
+  1.22.11
+
+Node version: 
+  14.17.3
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/pg-primise: Not found
+      at Request.params.callback [as _callback] (C:\Users\rodri\AppData\Roaming\nvm\v14.17.3\node_modules\yarn\lib\cli.js:66992:18)
+      at Request.self.callback (C:\Users\rodri\AppData\Roaming\nvm\v14.17.3\node_modules\yarn\lib\cli.js:140763:22)
+      at Request.emit (events.js:375:28)
+      at Request.<anonymous> (C:\Users\rodri\AppData\Roaming\nvm\v14.17.3\node_modules\yarn\lib\cli.js:141735:10)
+      at Request.emit (events.js:375:28)
+      at IncomingMessage.<anonymous> (C:\Users\rodri\AppData\Roaming\nvm\v14.17.3\node_modules\yarn\lib\cli.js:141657:12)
+      at Object.onceWrapper (events.js:481:28)
+      at IncomingMessage.emit (events.js:387:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "1.0.0",
+    "main": "index.js",
+    "license": "MIT"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
