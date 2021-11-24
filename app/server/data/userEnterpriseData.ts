@@ -16,7 +16,7 @@ export default class UserEnterpriseData {
     const hash = await bcrypt.hash(password, 10);
     const query = `INSERT INTO public."enterpriseUsers"(
       "fullName", email, "passwordHash", "enterpriseId")
-      VALUES ('${fullName}', '${email}', '${hash}', '${enterpriseId}');`;
+      VALUES ('${fullName}', '${email}', '${hash}', ${enterpriseId});`;
       return await database.query(query)
   }
 }
