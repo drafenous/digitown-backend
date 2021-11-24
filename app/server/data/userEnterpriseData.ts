@@ -4,7 +4,7 @@ import database from "../infra/database";
 
 export default class UserEnterpriseData {
   public async getUser(email: string, password: string): Promise<UserEnterprise | void> {
-    const query = `select * from public."enterpriseUsers" where email = '${email}'`;
+    const query = `SELECT * from public."enterpriseUsers" where email = '${email}' INNER JOIN public."enterprises" ON (public."enterpriseUsers"."enterpriseId" = public."enterprises"."enterpriseId")`;
     return await database.query(query).then((users: UserEnterprise[]) =>
       users.find(async (user) => {
         return await bcrypt.compare(password, user.passwordHash);
