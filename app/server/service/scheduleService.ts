@@ -16,6 +16,18 @@ export default class ScheduleService {
     return res.status(404).send("Not found");
   }
 
+  public async pendingList(req: Request, res: Response) {
+    const { userId } = req.query;
+    if (userId) {
+      const data = await this.db.getPendingSchedules(userId as string);
+      if (data) {
+        return res.json({ ...data });
+      }
+      return res.status(404).send("Not found");
+    }
+    return res.status(404).send("Not found");
+  }
+
   public async create(req: Request, res: Response) {
     const { userId, companyName, datetime } = req.body.params as Schedule;
     if (userId && companyName && datetime) {

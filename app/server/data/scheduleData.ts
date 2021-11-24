@@ -7,6 +7,11 @@ export default class ScheduleData {
     return await database.query(query);
   }
 
+  public async getPendingSchedules(userId: string): Promise<Schedule | void> {
+    const query = `select * from public.schedule where "userId" = '${userId}' WHERE "status" = 0`;
+    return await database.query(query);
+  }
+
   public async createSchedule({
     companyName,
     datetime,
