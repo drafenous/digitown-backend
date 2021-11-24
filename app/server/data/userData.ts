@@ -13,7 +13,7 @@ export default class UserData {
   }
 
   public async createUser({fullName, email, passwordHash: password}: User): Promise<User | void> {
-    const hash = bcrypt.hash(password, 10);
+    const hash = await bcrypt.hash(password, 10);
     const query = `INSERT INTO public.users(
       "fullName", email, "passwordHash")
       VALUES ('${fullName}', '${email}', '${hash}');`;

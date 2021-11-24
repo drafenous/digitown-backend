@@ -14,23 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const bcrypt_1 = __importDefault(require("bcrypt"));
 const database_1 = __importDefault(require("../infra/database"));
-class UserData {
+class UserEnterpriseData {
     getUser(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
-            const query = `select * from public.users where email = '${email}'`;
+            const query = `select * from public.enterpriseUsers where email = '${email}'`;
             return yield database_1.default.query(query).then((users) => users.find((user) => __awaiter(this, void 0, void 0, function* () {
                 return yield bcrypt_1.default.compare(password, user.passwordHash);
             })));
         });
     }
-    createUser({ fullName, email, passwordHash: password }) {
+    createUser({ fullName, email, passwordHash: password, enterpriseId }) {
         return __awaiter(this, void 0, void 0, function* () {
-            const hash = yield bcrypt_1.default.hash(password, 10);
-            const query = `INSERT INTO public.users(
-      "fullName", email, "passwordHash")
-      VALUES ('${fullName}', '${email}', '${hash}');`;
+            const hash = bcrypt_1.default.hash(password, 10);
+            const query = `INSERT INTO public.enterpriseUsers(
+      "fullName", email, "passwordHash", "enterpriseId")
+      VALUES ('${fullName}', '${email}', '${hash}', '${enterpriseId}');`;
             return yield database_1.default.query(query);
         });
     }
 }
-exports.default = UserData;
+exports.default = UserEnterpriseData;
