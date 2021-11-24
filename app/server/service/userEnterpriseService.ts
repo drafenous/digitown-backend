@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import UserEnterpriseData from "../data/UserEnterpriseData";
+import UserEnterpriseData from "../data/userEnterpriseData";
 
 export default class UserEnterpriseService {
   private db = new UserEnterpriseData();

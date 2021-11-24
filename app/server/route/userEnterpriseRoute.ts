@@ -1,6 +1,6 @@
 import bodyParser from "body-parser";
 import express from "express";
-import UserEnterpriseService from "../service/UserEnterpriseService";
+import UserEnterpriseService from "../service/userEnterpriseService";
 
 const router = express.Router()
 const service = new UserEnterpriseService()
