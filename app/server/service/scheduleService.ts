@@ -28,6 +28,18 @@ export default class ScheduleService {
     return res.status(404).send("Not found");
   }
 
+  public async update(req: Request, res: Response) {
+    const { userId, scheduleId } = req.query;
+    if (userId) {
+      const data = await this.db.updateStatus(String(userId), Number(scheduleId));
+      if (data) {
+        return res.json({ ...data });
+      }
+      return res.status(404).send("Not found");
+    }
+    return res.status(404).send("Not found");
+  }
+
   public async create(req: Request, res: Response) {
     const { userId, companyName, datetime } = req.body.params as Schedule;
     if (userId && companyName && datetime) {

@@ -8,7 +8,12 @@ export default class ScheduleData {
   }
 
   public async getPendingSchedules(userId: string): Promise<Schedule | void> {
-    const query = `select * from public.schedule where "userId" = '${userId}' WHERE "status" = 0`;
+    const query = `select * from public.schedule where "userId" = '${userId}' AND "status" = 0`;
+    return await database.query(query);
+  }
+
+  public async updateStatus(userId: string, scheduleId: number): Promise<Schedule | void> {
+    const query = `UPDATE public."schedule" SET "status" = 1 WHERE "scheduleId" = '${scheduleId}' AND "userId" = '${userId}'`
     return await database.query(query);
   }
 
