@@ -29,8 +29,7 @@ export default class ScheduleService {
   }
 
   public async update(req: Request, res: Response) {
-    console.log(req);
-    const { userId, scheduleId } = req.params;
+    const { userId, scheduleId } = req.body;
     if (userId) {
       const data = await this.db.updateStatus(String(userId), Number(scheduleId));
       if (data) {
