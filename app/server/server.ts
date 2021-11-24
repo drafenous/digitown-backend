@@ -3,8 +3,10 @@ import bodyParser from 'body-parser';
 import UserRoute from './route/userRoute';
 import UserEnterpriseRoute from './route/userEnterpriseRoute';
 import ScheduleRoute from './route/scheduleRoute';
+import cors from 'cors';
 const app = express()
 
+app.use(cors());
 app.use(bodyParser.json({type: 'application/*+json'}))
 app.use('/user', UserRoute);
 app.use('/userEnterprise', UserEnterpriseRoute);
